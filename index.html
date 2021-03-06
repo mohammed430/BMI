@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BMI calculator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+    <div class="container-md">
+    <form>
+        <div class="form-group">
+            <label>Weight</label>
+            <input id="weight" type="number" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Height</label>
+            <input id="height" type="number" class="form-control">
+        </div>
+
+        <button id="calculateBtn" type="button" class="btn btn-primary">Calculate</button>
+        <button type="reset" class="btn btn-danger">Reset</button>
+    </form>
+
+    <h1 class="mt-5">Your Result</h1>
+    <p id="result"></p>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('#calculateBtn').on('click', function(){
+                let weight = $('#weight').val();
+                let height = $('#height').val();
+                let bmi = weight / ( height * height )
+                let bodyType = '';
+                if(bmi <= 18.5){
+                    bodyType = "under weight"
+                }
+                else if (bmi <= 24.9){
+                    bodyType = "normal weight"
+                }
+                else if (bmi <= 29.9){
+                    bodyType = "over weight"
+                }
+                else {
+                    bodyType = "Obese"
+                }
+                $('#result').html(bodyType);
+            });
+        });
+    </script>
+</body>
+
+</html>
